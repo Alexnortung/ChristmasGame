@@ -503,20 +503,37 @@ function endGame() {
 		str: "You collected: " + s.score + giftString,
 		pos: new Vector(250, 200)
 	}
+	var text4 ={
+		str: "Press \"Enter\" to restart",
+		pos: new Vector(250, 255)
+	}
+
+	var textArr = [text1, text2, text3,text4];
 
 	ctx.fillStyle = "#fff";
 
-	ctx.fillRect(text1.pos.x - (ctx.measureText(text1.str).width/2) - 2, text1.pos.y - s.fontSize,
-		ctx.measureText(text1.str).width + 4, s.fontSize + 4 );
-	ctx.fillRect(text2.pos.x - (ctx.measureText(text2.str).width/2) - 2, text2.pos.y - s.fontSize,
-		ctx.measureText(text2.str).width + 4, s.fontSize + 4 );
-	ctx.fillRect(text3.pos.x - (ctx.measureText(text3.str).width/2) - 2, text3.pos.y - s.fontSize,
-		ctx.measureText(text3.str).width + 4, s.fontSize + 4 );
+	for (var i = textArr.length - 1; i >= 0; i--) {
+		ctx.fillRect(textArr[i].pos.x - (ctx.measureText(textArr[i].str).width/2) - 2, textArr[i].pos.y - s.fontSize,
+			ctx.measureText(textArr[i].str).width + 4, s.fontSize + 4 );
+		
+	}
 
 	ctx.fillStyle = "#000";
+	for (var i = textArr.length - 1; i >= 0; i--) {
+		
+		ctx.fillText(textArr[i].str, textArr[i].pos.x, textArr[i].pos.y);
+	}
 
-	ctx.fillText(text1.str, text1.pos.x, text1.pos.y);
-	ctx.fillText(text2.str, text2.pos.x, text2.pos.y);
+	
+	/*ctx.fillRect(text2.pos.x - (ctx.measureText(text2.str).width/2) - 2, text2.pos.y - s.fontSize,
+		ctx.measureText(text2.str).width + 4, s.fontSize + 4 );
+	ctx.fillRect(text3.pos.x - (ctx.measureText(text3.str).width/2) - 2, text3.pos.y - s.fontSize,
+		ctx.measureText(text3.str).width + 4, s.fontSize + 4 );*/
+
+	
+
+	
+	//ctx.fillText(text2.str, text2.pos.x, text2.pos.y);
 
 
 
@@ -524,14 +541,17 @@ function endGame() {
 	//draw score
 
 	//	ctx.strokeText(text3.str, text3.pos.x, text3.pos.y);
-	ctx.fillText(text3.str, text3.pos.x, text3.pos.y);
+	//ctx.fillText(text3.str, text3.pos.x, text3.pos.y);
 
 
 
 }
 
 function engGameKeyDown(e) {
-	// body...
+	if (e.keyCode == 13) {
+		changeScene(0);
+	}
+	
 }
 
 
