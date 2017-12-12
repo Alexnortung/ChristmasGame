@@ -590,6 +590,7 @@ Scene1Snowflake.prototype.update = function () {
 
 Scene1Snowflake.prototype.updateMovement = function () {
 	this.movement.x = Math.sin(this.tick/this.random);
+	//this.movement.setMagnitude(2);
 }
 
 //////////////////////
